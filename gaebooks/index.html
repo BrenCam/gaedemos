@@ -1,0 +1,45 @@
+<html>
+  <body>
+  
+  <h3>Google App Engine: Many-to-many JOIN</h3>
+  
+  <h4>Books by library</h4>
+  <table border="1">
+    <tr>
+        <th>Library</th>
+        <th>Street</th>
+        <th>City</th>
+        <th>Title</th>
+        <th>Author</th>
+    </tr>
+    {% for lib in libs_books %}
+        {% for book in lib.books %}
+        <tr>
+            <td>{{ lib.name }}</td>
+            <td>{{ lib.address }}</td>
+            <td>{{ lib.city }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+        </tr>
+       {% endfor %}
+    {% endfor %}
+  </table>
+
+
+
+  <h4>Libraries by books</h4>
+  <table border="1">
+    {% for book in books_libs %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.library.name }}</td>
+            <td>{{ book.library.address }}</td>
+            <td>{{ book.library.city }}</td>
+
+        </tr>
+    {% endfor %}
+  </table>
+  
+  </body>
+</html>

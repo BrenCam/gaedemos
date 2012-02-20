@@ -1,0 +1,40 @@
+#YAML file for books test app data store upload
+# !!!!!! CAUTION with spacing in this file - extraneous/missing spaces will cause dev startup errors
+
+application: gaebooks
+version: 1
+runtime: python
+api_version: 1
+
+#URL handlers etc.
+handlers:
+- url: /.*
+  script: gaebooks.py
+
+- url: /remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin
+
+# define handler for data files
+- url: /images
+  static_dir: static/images
+
+#Handler for gae schema process - works if file in root dir
+#- url: /.*
+#  script: gaeschema.py
+
+# url is the pattern to match to use that script - note the '?.*'
+# script refers to the path to script relative to the root dir
+#~ - url: /admin/?.*
+  #~ script: admin/gaeschema.py
+#~ 
+#~ - url: /jsontest/.*
+  #~ script: admin/jsontest.py
+
+#- url: /.*
+#  script: beam_importer.py
+
+# Examples, each in the examples folder/name_of_example.
+# Note: All examples share the same templates, flash, and js folders.
+#- url: /examples/(.*?)(/.*)?
+#  script: examples/\1/main.py

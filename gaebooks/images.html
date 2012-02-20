@@ -1,0 +1,41 @@
+<html>
+  <body>
+  
+  <h3>Google App Engine: Many-to-many JOIN</h3>
+  <h3>Google App Engine: Display Cities and Countries</h3>
+  
+  <h4>Tags by Image</h4>
+  <table border="1">
+    <tr>
+        <th>Image Title</th>
+        <th>Tag Name</th>
+    </tr>
+    {{imgs_tags }}
+    {% for img in imgs_tags %}
+        {% for tag in img.tags %}
+        <tr>
+            <td>{{ img.title }}</td>
+            <td>{{ tag.name }}</td>
+        </tr>
+       {% endfor %}
+    {% endfor %}
+  </table>
+
+  <h4>Images by Tag</h4>
+  <table border="1">
+    <tr>
+        <th>Tag Name</th>
+        <th>Image Title</th>
+    </tr>      
+    {% for tag in tags_imgs %}
+        {% for img in tag.images %}
+        <tr>
+            <td>{{ tag.name }}</td>
+            <td>{{ img.title }}</td>
+        </tr>
+        {% endfor %}
+    {% endfor %}
+  </table>
+  
+  </body>
+</html>
